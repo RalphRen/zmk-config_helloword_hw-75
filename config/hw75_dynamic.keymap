@@ -32,6 +32,23 @@
 				   <&macro_release &kp LSHIFT>,
 				   <&macro_release &kp LALT>;
 		};
+		sheet_forward: sheet-forward {
+			label = "SHEET_FORWARD";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&macro_press   &kp LCTRL>,
+				   <&macro_tap     &kp PG_UP>,
+				   <&macro_release &kp LCTRL>;
+		};
+
+		sheet_backward: sheet-backward {
+			label = "SHEET_BACKWARD";
+			compatible = "zmk,behavior-macro";
+			#binding-cells = <0>;
+			bindings = <&macro_press   &kp LCTRL>,
+				   <&macro_tap     &kp PG_DN>,
+				   <&macro_release &kp LCTRL>;
+		};
 	};
 
 	behaviors {
@@ -40,6 +57,12 @@
 			label = "SWITCH_TASKS";
 			#sensor-binding-cells = <0>;
 			bindings = <&tasks_forward>, <&tasks_backward>;
+		};
+		switch_sheet: switch-sheet {
+			compatible = "zmk,behavior-sensor-rotate";
+			label = "SWITCH_SHEET";
+			#sensor-binding-cells = <0>;
+			bindings = <&sheet_forward>, <&sheet_backward>;
 		};
 	};
 
@@ -80,6 +103,13 @@
 			icon = [EF 86 9C];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+		};
+		sheet {
+			label = "切换";
+			icon = [EF 85 9E];
+			bindings = <&trans &trans>;
+			sensor-bindings = <&switch_sheet>;
+			profile = <&profile_spring>;
 		};
 	};
 };

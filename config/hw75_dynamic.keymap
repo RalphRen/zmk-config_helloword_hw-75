@@ -106,7 +106,7 @@
 		};
 		sheet {
 			label = "切换";
-			icon = [EF 85 9E];
+			icon = [EF 86 87];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&switch_sheet>;
 			profile = <&profile_spring>;

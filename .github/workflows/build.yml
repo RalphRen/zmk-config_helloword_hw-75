@@ -61,9 +61,9 @@ jobs:
 
       - name: West build
         run: |
-          west build -s zmk/app -b ${{ matrix.board }} -- \
+          west build -s zmk/app -b hw75_dynamic@B -- \
             -DZMK_CONFIG=${GITHUB_WORKSPACE}/config \
-            -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/${{ matrix.keymap }}
+            -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/hw75_dynamic.keymap
         env:
           PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION: python
 
@@ -71,12 +71,12 @@ jobs:
         run: |
           mkdir build/artifacts
           if [ -f build/zephyr/zmk.uf2 ]; then
-            cp build/zephyr/zmk.uf2 "build/artifacts/${{ matrix.board }}-zmk.uf2"
+            cp build/zephyr/zmk.uf2 "build/artifacts/hw75_dynamic@B-zmk.uf2"
           fi
           if [ -f build/zephyr/zmk.hex ]; then
-            cp build/zephyr/zmk.hex "build/artifacts/${{ matrix.board }}-zmk.hex"
+            cp build/zephyr/zmk.hex "build/artifacts/hw75_dynamic@B-zmk.hex"
           fi
-          cp build/zephyr/zmk.bin "build/artifacts/${{ matrix.board }}-zmk.bin"
+          cp build/zephyr/zmk.bin "build/artifacts/hw75_dynamic@B-zmk.bin"
 
       - name: Archive
         uses: actions/upload-artifact@v3

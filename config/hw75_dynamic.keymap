@@ -62,7 +62,7 @@
 			compatible = "zmk,behavior-sensor-rotate";
 			label = "SWITCH_SHEET";
 			#sensor-binding-cells = <0>;
-			bindings = <&sheet_forward>, <&sheet_backward>;
+			bindings = <&sheet_backward>, <&sheet_forward>;
 		};
 	};
 

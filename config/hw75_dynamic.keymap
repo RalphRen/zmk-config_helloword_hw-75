@@ -71,12 +71,6 @@
 	keymap {
 		compatible = "zmk,keymap-ext", "zmk,keymap";
 
-		disable {
-			label = "EDC";
-			icon = [EF 86 B1];
-			profile = <&profile_disable>;
-		};
-
 		volume {
 			label = "音量";
 			icon = [EF 86 AE];

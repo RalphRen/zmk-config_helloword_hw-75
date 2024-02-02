@@ -1,6 +1,7 @@
 /*
  * Copyright (c) 2022 The ZMK Contributors
  * SPDX-License-Identifier: MIT
+ * chr(int(' ',16)).encode('utf-8')
  */
 
 #include <behaviors.dtsi>
@@ -32,6 +33,7 @@
 				   <&macro_release &kp LSHIFT>,
 				   <&macro_release &kp LALT>;
 		};
+		
 		sheet_forward: sheet-forward {
 			label = "SHEET_FORWARD";
 			compatible = "zmk,behavior-macro";
@@ -69,11 +71,25 @@
 	keymap {
 		compatible = "zmk,keymap-ext", "zmk,keymap";
 
+		disable {
+			label = "EDC";
+			icon = [EF 86 B1];
+			profile = <&profile_disable>;
+		};
+
 		volume {
 			label = "音量";
 			icon = [EF 86 AE];
 			bindings = <&lvkp LV_KEY_PREV &lvkp LV_KEY_NEXT>;
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+		};
+
+		sheet {
+			label = "切换";
+			icon = [EF 86 87];
+			bindings = <&trans &trans>;
+			sensor-bindings = <&switch_sheet>;
+			profile = <&profile_spring>;
 		};
 
 		scroll {
@@ -103,13 +119,6 @@
 			icon = [EF 86 9C];
 			bindings = <&trans &trans>;
 			sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
-		};
-		sheet {
-			label = "切换";
-			icon = [EF 86 87];
-			bindings = <&trans &trans>;
-			sensor-bindings = <&switch_sheet>;
-			profile = <&profile_spring>;
 		};
 	};
 };
